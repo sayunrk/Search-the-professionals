@@ -24,9 +24,9 @@ export default function Login(){
 
         setLoading(true);
         login(formData).then((res: AxiosResponse) => {
-            console.log(res);
+            console.log("Login response:", res.data);
             localStorage.setItem('token', res.data.token);
-            localStorage.setItem('currentUser', res.data.userData)
+            localStorage.setItem('currentUser', JSON.stringify(res.data.userData))
             navigate('/home');
         }).catch(
             (error: AxiosError) => {
