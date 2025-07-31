@@ -24,7 +24,6 @@ export default function Register() {
         register(formData)
             .then((res: AxiosResponse) => {
                 console.log("Registration successful:", res);
-                // Optional: Automatically log the user in or redirect
                 alert("Registration successful!");
             })
             .catch((error: AxiosError) => {
