@@ -2,7 +2,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react"
 import './login.css';
 import { login } from "../../shared/config/api";
 import type { AxiosError, AxiosResponse } from "axios";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export default function Login(){
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ export default function Login(){
         login(formData).then((res: AxiosResponse) => {
             console.log("Login response:", res.data);
             localStorage.setItem('token', res.data.token);
-            localStorage.setItem('currentUser', JSON.stringify(res.data.userData))
+            localStorage.setItem('currentUser', JSON.stringify(res.data.user))
             navigate('/home');
         }).catch(
             (error: AxiosError) => {
@@ -47,6 +47,13 @@ export default function Login(){
                 <input className="login-input" placeholder="username" name='username' onChange={handleChange} value= {formData.username}type="text" />
                 <input className="login-input" placeholder="password" name='password' onChange={handleChange} value= {formData.password}type="text" />
                 <button className="login-button" type="submit">Submit</button><span onClick={() => navigate('/home')}></span>
+
+                <p className="switcher">
+                    Don’t have an account?{" "}
+                    <span onClick={() => navigate('/register')} style={{ color: 'blue', cursor: 'pointer' }}>
+                        Register here
+                    </span>
+                </p>
 
             </form>
 

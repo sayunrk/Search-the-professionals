@@ -1,13 +1,14 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
-import "./register.css"; // You can reuse the same CSS
 import type { AxiosError, AxiosResponse } from "axios";
-import { register } from "../../shared/config/api"; 
+import { register } from "../../shared/config/api";
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import './register.css';
 
 export default function Register() {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
-        name: '' 
+        email: '',
+        role: ''
     });
     const [loading, setLoading] = useState(false);
 
@@ -36,17 +37,19 @@ export default function Register() {
     };
 
     return (
-        <div className="register-wraper">
-            <form className="Login-form" onSubmit={handleSubmit}>
-                <h2>Register</h2>
+        <div className="register-container">
+            <form className="register-form" onSubmit={handleSubmit}>
+                <h2 className="register-title">Register</h2>
                 <input
-                    placeholder="Name"
-                    name="name"
+                    className="register-input"
+                    placeholder="E-mail"
+                    name="email"
                     onChange={handleChange}
-                    value={formData.name}
-                    type="text"
+                    value={formData.email}
+                    type="email"
                 />
                 <input
+                    className="register-input"
                     placeholder="Username"
                     name="username"
                     onChange={handleChange}
@@ -54,13 +57,22 @@ export default function Register() {
                     type="text"
                 />
                 <input
+                    className="register-input"
                     placeholder="Password"
                     name="password"
                     onChange={handleChange}
                     value={formData.password}
                     type="password"
                 />
-                <button type="submit" disabled={loading}>
+                <input
+                    className="register-input"
+                    placeholder="Role (e.g. Developer, Designer)"
+                    name="role"
+                    onChange={handleChange}
+                    value={formData.role}
+                    type="text"
+                />
+                <button className="register-button" type="submit" disabled={loading}>
                     {loading ? "Registering..." : "Register"}
                 </button>
             </form>

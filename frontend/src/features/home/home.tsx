@@ -8,6 +8,7 @@ interface IUser {
   _id: string;
   username: string;
   email: string;
+  role?: string;
 }
 interface IUserResponse {
   message: string;
@@ -21,28 +22,43 @@ function Home(){
   const [userList, setUserList] = useState<IUser[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
-  const searchTags: string[] = ["All", 'Designer', 'Develper', 'Photographer']
+  const [selectedTag, setSelectedTag] = useState<string>('All');
+  const searchTags: string[] = ["All", 'Designer', 'Developer', 'Photographer'];
 
-  useEffect(() =>{
-    setLoading(true)
-    searchUserApi(search).then(
-      (res: AxiosResponse<IUserResponse>) => {
-        setUserList(res.data.users)
-      }
-    ).finally(
-      () => {
-        setLoading(false)
-      }
-    )
-  }, [search])
+  useEffect(() => {
+    setLoading(true);
+    // If "All" is selected, show all users
+    if (selectedTag === "All") {
+      searchUserApi(search).then(
+        (res: AxiosResponse<IUserResponse>) => {
+          setUserList(res.data.users);
+        }
+      ).finally(() => {
+        setLoading(false);
+      });
+    } else {
+      // If a tag is selected, search by role
+      searchUserApi(search, selectedTag).then(
+        (res: AxiosResponse<IUserResponse>) => {
+          setUserList(res.data.users);
+        }
+      ).finally(() => {
+        setLoading(false);
+      });
+    }
+  }, [search, selectedTag]);
 
-  const onValueChange = (e:ChangeEvent<HTMLInputElement>) =>{
+  const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setSearch(value)
-  }
+    setSearch(value);
+  };
+
+  const handleTagClick = (tag: string) => {
+    setSelectedTag(tag);
+  };
 
   const handleLogout = () => {
-    localStorage.clear()
+    localStorage.clear();
     navigate('/');
   };
 
@@ -67,8 +83,8 @@ function Home(){
           {searchTags.map((tag: string) => (
             <div
               key={tag}
-              className="pills"
-              onClick={() => setSearch(tag === "All" ? "" : tag)}
+              className={`pills${selectedTag === tag ? ' selected' : ''}`}
+              onClick={() => handleTagClick(tag)}
             >
               {tag}
             </div>
@@ -81,8 +97,8 @@ function Home(){
               userList.map((user: IUser) => (
                 <div className="card" key={user._id}>
                   <h3>{user.username}</h3>
-                  <p>Developer</p>
-                  <p>ING Tech</p>
+                  <p>{user.role || "No role set"}</p>
+                  <p>{user.email || "No email"}</p>
                 </div>
               ))
             ) : (
