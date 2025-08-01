@@ -27,7 +27,7 @@ function Home(){
 
   useEffect(() => {
     setLoading(true);
-    // If "All" is selected, show all users
+    // ALl
     if (selectedTag === "All") {
       searchUserApi(search).then(
         (res: AxiosResponse<IUserResponse>) => {
