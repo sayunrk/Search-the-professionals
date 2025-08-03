@@ -64,11 +64,20 @@ function Home(){
 
   return (
     <div className="homepage-wrapper">
-      <div className="top-navigation">
+      <div className="top-navigation" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <p>Welcome back, {user.username.toUpperCase()}</p>
-        <button onClick={handleLogout} className="button-primary button-light logout-button">
-          Logout
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <button
+            onClick={() => navigate('/profile', { state: { user } })}
+            className="button-primary"
+            style={{ marginRight: '1rem' }}
+          >
+            Profile
+          </button>
+          <button onClick={handleLogout} className="button-primary button-light logout-button">
+            Logout
+          </button>
+        </div>
       </div>
 
       <div className="hero-wrapper">

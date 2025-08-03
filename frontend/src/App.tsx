@@ -6,6 +6,7 @@ import Register from './features/register/register'
 import Home from './features/home/home'
 import LoginGuard from './shared/Guards/loginGuard'
 import AuthGuard from './shared/Guards/authGuard'
+import Profile from './features/Profile/profile'
 
 function App() {
   //functionality
@@ -14,7 +15,7 @@ function App() {
   return (
     //html
     <Routes>
-      <Route path='/' element={<Navigate to="/Login" replace />}/>
+      <Route path='/' element={<Navigate to="/login" replace />}/>
       <Route path='/login' element={
         <LoginGuard>
         <Login/>
@@ -30,6 +31,11 @@ function App() {
           <Home/>
         </AuthGuard>
           }/>
+        <Route path='/profile' element={
+        <AuthGuard>
+          <Profile/>
+        </AuthGuard>
+        }/>
     </Routes>
   )
 }
