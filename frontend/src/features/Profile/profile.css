@@ -1,0 +1,124 @@
+/* --- Black & White Modern Profile Page Styles --- */
+.profile-main-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  font-family: 'Inter', Arial, sans-serif;
+  color: #111;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+.profile-avatar-section {
+  display: flex;
+  align-items: center;
+}
+.profile-avatar-img {
+  margin-right: 1.5rem;
+}
+.profile-header-info {
+  display: flex;
+  flex-direction: column;
+}
+.profile-header-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111;
+}
+.profile-header-email {
+  color: #555;
+  font-size: 1.1rem;
+}
+.profile-edit-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.profile-edit-btn:hover {
+  background: #333;
+}
+.profile-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 3.5rem;
+  margin-bottom: 2.5rem;
+}
+.profile-detail label {
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.profile-detail input {
+  width: 100%;
+  padding: 0.7rem 0.5rem;
+  border-radius: 7px;
+  border: 1px solid #e0e0e0;
+  background: #f7f7f7;
+  color: #111;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.profile-section {
+  margin-bottom: 2.2rem;
+}
+.profile-email-box {
+  display: flex;
+  align-items: center;
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.profile-email-meta {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+.profile-add-email-btn {
+  background: none;
+  border: 1px solid #111;
+  color: #111;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+.profile-add-email-btn:hover {
+  background: #111;
+  color: #fff;
+}
+.profile-experience-box {
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  color: #111;
+  margin-bottom: 1rem;
+}
+.profile-skills-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.profile-skill-pill {
+  background: #111;
+  color: #fff;
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+}

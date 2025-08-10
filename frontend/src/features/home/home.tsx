@@ -3,6 +3,7 @@ import './home.css';
 import {useNavigate} from 'react-router-dom';
 import type { AxiosResponse } from 'axios';
 import { searchUserApi } from '../../shared/config/api';
+import { FaUserCircle } from "react-icons/fa";
 
 interface IUser {
   _id: string;
@@ -57,30 +58,23 @@ function Home(){
     setSelectedTag(tag);
   };
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate('/');
-  };
+
 
   return (
     <div className="homepage-wrapper">
       <div className="top-navigation" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <p>Welcome back, {user.username.toUpperCase()}</p>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <button
-            onClick={() => navigate('/profile', { state: { user } })}
-            className="button-primary"
-            style={{ marginRight: '1rem' }}
-          >
-            Profile
-          </button>
-          <button onClick={handleLogout} className="button-primary button-light logout-button">
-            Logout
-          </button>
+          <FaUserCircle size={36} style={{ marginRight: '1rem', cursor: 'pointer' }}
+            onClick={() => navigate('/profile', { state: { user } })} title="Profile"/>
         </div>
       </div>
 
+
       <div className="hero-wrapper">
+        <div className="quote">
+          <div className="quote-context">Find and connect with professionals who inspire you every day.</div>
+        </div>
         <input
           type="text"
           onChange={onValueChange}
