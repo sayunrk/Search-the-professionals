@@ -9,6 +9,6 @@ export function authMiddleware(req, res, next) {
         req.user = data;
         next();
     } catch (e) {
-        res.status(401).send(e);
+       res.status(401).json({ error: e.message });
     }
 }

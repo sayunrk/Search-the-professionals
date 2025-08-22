@@ -1,10 +1,19 @@
+// src/shared/interfaces/user.interface.ts
+
 export interface IUser {
-    id: string;
-    username: string;
-    role: string;
-    email: string;
-    designation: string;
-    address: string;
-    bio: string;
-    password: string;
+  _id: string; 
+  username: string;
+  email: string;
+  role?: string;
+  designation?: string;
+  address?: string;
+  bio?: string;
+  experience?: IExperience[]; // <-- CORRECTED LINE
+}
+
+export interface IExperience {
+  _id?: string; 
+  title: string;
+  company: string;
+  description?: string;
 }

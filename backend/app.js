@@ -12,9 +12,9 @@ app.use(cors({
 }));
 
 dotenv.config();
-//Helps read and json data
+
 app.use(express.json());
 
-app.use('/api/auth',authRoutes); //prefix all routes
+app.use('/api/auth',authRoutes); 
 app.use('/api/user',userRoutes);
 export default app;

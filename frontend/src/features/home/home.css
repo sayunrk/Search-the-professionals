@@ -1,74 +1,99 @@
+/* Base */
 body {
-  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+  background-color: #ffffff;
+  color: #111111;
   font-family: 'Inter', Arial, sans-serif;
-  color: #111;
   min-height: 100vh;
-}
-.quote {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1.2rem;
-}
-.quote-context {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: #222;
-  text-align: center;
-  font-style: italic;
-  letter-spacing: 0.01em;
-  line-height: 1.5;
-  margin: 0.5rem 0 0.2rem 0;
-  background: none;
-  border: none;
-  box-shadow: none;
+  margin: 0;
 }
 
-/* home.css */
-
+/* Layout */
 .homepage-wrapper {
-  max-width: 960px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: Arial, sans-serif;
 }
 
+/* Top navigation */
 .top-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  font-weight: 500;
 }
 
-.button-primary {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #0077ff;
-  color: white;
-  border-radius: 5px;
+.top-navigation p {
+  font-size: 1.2rem;
+}
+
+.profile-icon {            
   cursor: pointer;
+  color: #555555;
+  transition: color .2s ease;
+}
+.profile-icon:hover {
+  color: #111111;
 }
 
-.button-light {
-  background-color: #f9f9f9;
-  color: #333;
-  border: 1px solid #ccc;
+
+.hero-wrapper {
+  position: relative;
+  width: 100%;
+  height: 360px;          
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;        
 }
 
-.logout-button {
-  margin-left: 1rem;
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
 
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  background: rgba(255,255,255,0.35);
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+  color: #111111;
+}
+
+/* Search input */
 .hero-wrapper input[type="text"] {
   width: 100%;
+  max-width: 520px;
   padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #111111;
   font-size: 1rem;
+  box-shadow: none;
 }
 
+.hero-wrapper input::placeholder {
+  color: #9ca3af;
+}
+
+/* Search tags */
 .search-tags {
   display: flex;
   flex-wrap: wrap;
@@ -77,46 +102,76 @@ body {
 }
 
 .pills {
-  padding: 0.4rem 0.9rem;
-  background-color: #e0e0e0;
-  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  background-color: #f4f4f5;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: background-color 0.2s ease;
+  font-weight: 500;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  color: #111111;
 }
 
 .pills:hover {
-  background-color: #ccc;
+  background-color: #eeeeee;
 }
 
+.pills.selected {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+/* Results grid */
 .results {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
+/* User card */
 .card {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 1rem 1.2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 .card h3 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  color: #222;
+  font-size: 1.15rem;
+  color: #111111;
 }
 
 .card p {
   margin: 0.3rem 0;
   font-size: 0.95rem;
-  color: #555;
+  color: #444444;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid #111111;
+  margin-bottom: 0.5rem;
+}
+
+/* Empty state */
+.results p {
+  text-align: center;
+  color: #666666;
+  font-size: 1rem;
+  grid-column: 1 / -1;
 }
